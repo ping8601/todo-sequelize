@@ -5,6 +5,9 @@ const bcrypt = require('bcryptjs')
 
 const routes = require('./routes') 
 const { route } = require('./routes')
+const db = require('./models')
+const Todo = db.Todo
+const User = db.User
 
 const app = express()
 const PORT = 3000
