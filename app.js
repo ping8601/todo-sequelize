@@ -3,6 +3,9 @@ const exphbs = require('express-handlebars')
 const methodOverride = require('method-override')
 const bcrypt = require('bcryptjs')
 
+const routes = require('./routes') 
+const { route } = require('./routes')
+
 const app = express()
 const PORT = 3000
 
@@ -16,9 +19,8 @@ app.use(express.urlencoded({ extended: true }))
 // use method override to process all the request
 app.use(methodOverride('_method'))
 
-app.get('/', (req, res) => {
-  res.send('hello world!')
-})
+// set router
+app.use(routes)
 
 app.listen(3000, () => {
   console.log(`App is listening on http://localhost:${PORT}`)
