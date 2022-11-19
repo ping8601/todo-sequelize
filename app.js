@@ -34,6 +34,13 @@ app.use(session({
 // use passport
 usePassport(app)
 
+// add middleware to add variables for each request
+app.use((req, res, next) => {
+  res.locals.isAuthenticated = req.isAuthenticated()
+  res.locals.user = req.user
+  next()
+})
+
 // set router
 app.use(routes)
 
