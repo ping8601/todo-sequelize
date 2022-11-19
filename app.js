@@ -9,6 +9,7 @@ const { route } = require('./routes')
 const db = require('./models')
 const Todo = db.Todo
 const User = db.User
+const usePassport = require('./config/passport')
 
 const app = express()
 const PORT = 3000
@@ -29,6 +30,9 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }))
+
+// use passport
+usePassport(app)
 
 // set router
 app.use(routes)
